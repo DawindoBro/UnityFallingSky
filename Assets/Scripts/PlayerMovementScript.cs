@@ -4,8 +4,8 @@ public class PlayerMovementScript : MonoBehaviour
 {
     public Rigidbody rb;
 
-    public GameManager manager;
-    public float speed =5;
+    
+    
     public bool snappy = true;
 
     private Vector3 movementInput;
@@ -16,10 +16,7 @@ public class PlayerMovementScript : MonoBehaviour
         {
             rb = GetComponent<Rigidbody>();
         }
-        if(manager == null){
-            manager = gameObject.AddComponent<GameManager>();
-        }
-        speed = manager.PlayerSpeed;
+        
     }
 
     void Update()
@@ -33,16 +30,20 @@ public class PlayerMovementScript : MonoBehaviour
 
     private void FixedUpdate()
     {
+
+        
+
         if (snappy)
         {
             // 3. Apply speed to X, keep Gravity (Y), and force Z to 0
             // Note: If you are using Unity 6, change 'velocity' to 'linearVelocity'
-            rb.linearVelocity = new Vector3(movementInput.x * speed, rb.linearVelocity.y, 0);
+            Debug.Log(GameManager.instance.PlayerSpeed);
+            rb.linearVelocity = new Vector3(movementInput.x * GameManager.instance.PlayerSpeed, rb.linearVelocity.y, 0);
         }
         else
         {
             // Adds force only on the X axis
-            rb.AddForce(new Vector3(movementInput.x * speed * 10f, 0, 0));
+            rb.AddForce(new Vector3(movementInput.x * GameManager.instance.PlayerSpeed * 10f, 0, 0));
         }
     }
 }

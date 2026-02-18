@@ -9,6 +9,7 @@ public class CoinMenager : MonoBehaviour
     private void Start()
     {
         Coins = GameManager.instance.Coins;
+        UiUpdate();
     }
     public void addCoin(int amount)
     {

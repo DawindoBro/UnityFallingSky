@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     //Upgrade Costs
 
     public int PlayerSpeedUpgradeCost =100;
+    public int PlayerSpeedUpgradeCostToAdd = 25;
 
 
     private void Awake()
