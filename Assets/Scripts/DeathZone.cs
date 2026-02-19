@@ -6,6 +6,9 @@ public class DeathZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        HealthMenager.Die();
+        if (other.CompareTag("Player"))
+        {
+            HealthMenager.Die();
+        }
     }
 }
